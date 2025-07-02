@@ -1,22 +1,26 @@
 // import { Card, Spinner } from 'react-bootstrap';
+import { useEffect, useState, useContext } from 'react'
 import { Container, Row, Col, Card, Button, Form, Badge, Stack } from 'react-bootstrap'
-import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
+import { CartContext } from '../components/context/CartContext';
 
 export default function Productos() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-    const showSuccessModal = () => {
-        Swal.fire({
-            title: '¡Producto agregado!',
-            text: 'El producto fue añadido al carrito.',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-        });
-    }
-
+  const { addToCart, cart } = useContext(CartContext);
+    // console.log('cart',cart);
+    
+  const addToCartModal = (product) => {
+    // console.log('product', product);
+    addToCart(product);
+    Swal.fire({
+        title: '¡Producto agregado!',
+        text: 'El producto fue añadido al carrito.',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+    });
+  }
   useEffect(() => {
-
     fetch('https://api.escuelajs.co/api/v1/products?limit=18&offset=10')
     .then(resp => resp.json())
     .then(data => {
@@ -56,14 +60,11 @@ export default function Productos() {
                 </Card.Text>
                 <Form.Select aria-label="Default select example">
                     <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
                 </Form.Select>
-                <Button  onClick={showSuccessModal} variant="success" size="sm">Agregar al carrito</Button>
-                </Card.Body>
+                  <Button onClick={() => addToCartModal(product)} variant="success" size="sm">
+                    Agregar al carrito
+                  </Button>
+                </Card.Body>                
             </Card>
             </Col>
         ))}

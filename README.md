@@ -1,6 +1,19 @@
 > ✅ **Aplicación desplegada:**  
 > 👉 [https://react-ttech.netlify.app/](https://react-ttech.netlify.app/)
 
+## 🔐 Autenticación
+
+Para acceder al panel de administración (**CRUD de productos**), es necesario iniciar sesión.
+
+### 🔑 Credenciales de acceso:
+
+- **Usuario:** `admin`
+- **Contraseña:** `admin`
+
+Una vez logueado, podrás ver y modificar los productos desde la sección protegida.
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

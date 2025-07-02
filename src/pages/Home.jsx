@@ -13,7 +13,7 @@ export default function Home(){
                 <Card.Body>
                 <Card.Title>Diseños únicos</Card.Title>
                 <Card.Text>Estampados originales y personalizados para vos.</Card.Text>
-                 <Card.Img
+                <Card.Img
                     src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
                     alt="Remera producto"
                     style={{
